@@ -1,0 +1,21 @@
+﻿/*clasa diva przechowującego form*/
+#windowLoginContainer {
+    width: 300px;
+    height: 270px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #b8b8b8;
+}
+/*clasa dla forma*/
+#elementForm {
+    margin: auto;
+    text-align: center;
+}
+/*clasa dla elementów forma*/
+.elementOfForm {
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+}

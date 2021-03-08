@@ -1,0 +1,29 @@
+﻿/*clasa diva przechowującego form*/
+#windowLoginContainer {
+    width: 300px;
+    height: 270px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 50px;
+    border-radius: 10%;
+    color: #82eaff;
+    background-color: #ba3d3d;
+    text-shadow: 0 0 2px black;
+    -webkit-box-shadow: 0px 0px 57px #82eaff;
+    -moz-box-shadow: 0px 0px 57px 3px #82eaff;
+    box-shadow: 0px 0px 57px 3px #82eaff;
+}
+#errorLog{
+    color:#70ff70;
+}
+/*clasa dla forma*/
+#elementForm {
+    margin: auto;
+    text-align: center;
+}
+/*clasa dla elementów forma*/
+.elementOfForm {
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+}

@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    ViewData["login"] = "none";
+}
+<div id="windowLoginContainer">
+    @model Projekt.Models.LoginForm
+    <form id="elementForm" asp-controller="Home" asp-action="Zaloguj" method="post">
+        <label class="elementOfForm">Nazwa użytkownika:</label><br />
+        <input class="elementOfForm" asp-for="Login" /><br />
+        @if (ViewBag.errorCheck == true)
+        {
+            <div class="elementOfForm" id="errorLog">Użytkownik nie istnieje</div>
+        }
+        <label class="elementOfForm">Hasło:</label><br />
+        <input class="elementOfForm" asp-for="Password" required type="password"/><br />
+        <button class="elementOfForm butt-defaulta" type="submit">Zaloguj</button>
+    </form>
+</div>

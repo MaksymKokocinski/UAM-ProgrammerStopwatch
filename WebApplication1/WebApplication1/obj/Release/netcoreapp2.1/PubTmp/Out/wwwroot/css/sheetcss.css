@@ -1,0 +1,12 @@
+﻿/*opcje zmiany styli*/
+#changeStyle{
+    width:200px;
+    height:400px;
+    background-color:Highlight;
+    float:left;
+    padding:20px;
+    text-align:center;
+}
+#changeStyle > label{
+    margin-top:10px;
+}

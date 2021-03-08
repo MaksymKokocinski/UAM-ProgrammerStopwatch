@@ -1,0 +1,65 @@
+﻿.butt-defaulta {
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+}
+.background-site {
+    background-color: lightblue;
+}
+.navbar-own {
+    background-color: steelblue;
+}
+/*clasa diva przechowującego form*/
+#windowLoginContainer {
+    width: 300px;
+    height: 270px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 50px;
+    border-radius: 10%;
+    color: #82eaff;
+    background-color: steelblue;
+    text-shadow: 0 0 2px black;
+    -webkit-box-shadow: 0px 0px 57px #82eaff;
+    -moz-box-shadow: 0px 0px 57px 3px #82eaff;
+    box-shadow: 0px 0px 57px 3px #82eaff;
+}
+#errorLog {
+    color: #70ff70;
+}
+/*clasa dla forma*/
+#elementForm {
+    margin: auto;
+    text-align: center;
+}
+/*clasa dla elementów forma*/
+.elementOfForm {
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+}
+/*
+    edycja stylu tabeli
+*/
+.table_own_style
+{
+    margin:auto;
+}
+.table_own_style, .table_own_style thead, .table_own_style tbody, .table_own_style tr, .table_own_style th, .table_own_style td {
+    border: none;
+}
+.table_own_style th, .table_own_style td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid black;
+}
+.table_style_time {
+    width: 120px;
+}
+.table_style_name {
+    width: 200px;
+}
+.table_style_button {
+    padding: 0px;
+    width:130px;
+}

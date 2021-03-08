@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Projekt.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Admin";
+    var result = 0;
+    foreach (var item in Model)
+    {
+        if (item.stan == true)
+        {
+            result += (int)item.diffrence;
+        }
+    }
+    ViewData["resAdmin"] = result;
+}
+<br />
+<p>
+    <button class="butt-defaulta" onclick="location.href='@Url.Action("Create", "Tasks")'">
+        Stwórz zadanie
+    </button>
+</p>
+<h2>
+    Zadania
+</h2>
+<table class="table_own_style">
+    <thead>
+        <tr>
+            <th class="table_style_name">
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.time_admin)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(m => m.stan == false))
+        {
+            <tr>
+                <td class="table_style_name">
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td class="table_style_time">
+                    @Html.DisplayFor(modelItem => item.time_admin)
+                </td>
+                <td style="border: 1px solid black">
+                    <button class="butt-defaulta" onclick="location.href='@Url.Action("Edit", "Tasks",new {id=item.id})'">
+                        Edytuj
+                    </button>
+                </td>
+                <td style="border: 1px solid black">
+                    <button class="butt-defaulta" onclick="confirmAdminDelete('@item.id')">
+                        Usuń
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h2>
+    Wykonane
+</h2>
+<table class="table_own_style">
+    <thead>
+        <tr>
+            <th class="table_style_name">
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.time_admin)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.time_user)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.diffrence)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(m => m.stan == true))
+        {
+            @if (item.diffrence < 0)
+            {
+                <tr style="background-color:#ff2626;">
+                    <td class="table_style_name">
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td class="table_style_time">
+                        @Html.DisplayFor(modelItem => item.time_admin)
+                    </td>
+                    <td class="table_style_time">
+                        @Html.DisplayFor(modelItem => item.time_user)
+                    </td>
+                    <td class="table_style_time">
+                        @Html.DisplayFor(modelItem => item.diffrence)
+                    </td>
+                    <td class="background-site">
+                        <button class="butt-defaulta" onclick="confirmAdminDelete('@item.id')">
+                            Usuń
+                        </button>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr style="background-color:#00bf00;">
+                    <td class="table_style_name">
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td class="table_style_time">
+                        @Html.DisplayFor(modelItem => item.time_admin)
+                    </td>
+                    <td class="table_style_time">
+                        @Html.DisplayFor(modelItem => item.time_user)
+                    </td>
+                    <td class="table_style_time">
+                        @Html.DisplayFor(modelItem => item.diffrence)
+                    </td>
+                    <td class="background-site">
+                        <button class="butt-defaulta" onclick="confirmAdminDelete('@item.id')">
+                            Usuń
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><b>Suma różnic</b></td>
+            <td><b>@ViewData["resAdmin"]</b></td>
+        </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,42 @@
+﻿#container-login {
+    float:left;
+    margin-top: 5px;
+    margin-right: 20px;
+}
+#login-name {
+    color: white;
+    font-size: 28px;
+    text-decoration: none;
+}
+#container-button {
+    margin-top: 5px;
+}
+#button-logout {
+    font-size:20px;
+    border-radius:10px;
+}
+#button-text {
+    color:darkblue;
+    text-decoration: none;
+}
+#windowLoginContainer {
+    width: 300px;
+    height: 230px;
+    margin:auto;
+    margin-top:100px;
+    padding:50px;
+    border-radius:20px;
+    background-color: #b8b8b8;
+}
+.elementOfForm{
+    margin:auto;
+    margin-top:10px;
+    text-align:center;
+}
+#elementForm {
+    margin: auto;
+    text-align: center;
+}
+#errorLog{
+    color:red;
+}

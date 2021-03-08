@@ -1,0 +1,45 @@
+﻿@model Projekt.Models.Tasks
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Usuwanie</h2>
+
+<h3>Czy jesteś pewien, że chcesz usunąć zadanie?</h3>
+<div>
+    <h4>Zadanie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.time_admin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.time_admin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.time_user)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.time_user)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.diffrence)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.diffrence)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Usuń" class="btn btn-default" /> |
+        <a asp-action="Index">Powrót do listy zadań</a>
+    </form>
+</div>

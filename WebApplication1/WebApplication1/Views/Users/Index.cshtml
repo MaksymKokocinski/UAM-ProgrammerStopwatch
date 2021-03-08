@@ -1,0 +1,241 @@
+﻿@using Projekt.Models;
+@model Tuple<List<Tasks>, List<holdTime>, List<Userzy>>
+@{
+    ViewData["Title"] = "User";
+    var result = 0;
+    foreach (var item in Model.Item1)
+    {
+        if (item.stan == true)
+        {
+            foreach (var item3 in Model.Item3)
+            {
+                if (item3.login == (string)ViewData["login"])
+                {
+                    if (item.id_usera == item3.id)
+                    {
+                        result += (int)item.diffrence;
+                    }
+                }
+            }
+        }
+    }
+    ViewData["res"] = result;
+}
+<h2>
+    Zadania
+</h2>
+<table class="table_own_style">
+    <tbody>
+        @foreach (var item in Model.Item1)
+        {
+            @if (item.stan == false)
+            {
+                @if (item.id_holdTime == 0)
+                {
+                    <tr>
+                        <td class="table_style_name">
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td class="table_style_time">
+                            @Html.DisplayFor(modelItem => item.time_admin)
+                        </td>
+                        <td class="table_style_button">
+                            <button class="butt-defaulta" onclick="location.href='@Url.Action("Start", "Users",new {id=item.id})'">
+                                Start
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+<h2>
+    Przypisane
+</h2>
+<table class="table_own_style">
+    <thead>
+        <tr>
+            <th class="table_style_name">
+                @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().name)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().time_admin)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().time_start)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().diffrence)
+            </th>
+        </tr>
+    </thead>
+    <tbody id="body_user_edit">
+        @foreach (var item in Model.Item1)
+        {
+            @if (item.stan == false)
+            {
+                @foreach (var item3 in Model.Item3)
+                {
+                    @if (item3.login == (string)ViewData["login"])
+                    {
+                        @if (item.id_usera == item3.id)
+                        {
+                            @if (item.id_holdTime != 0)
+                            {
+                                @if (Model.Item2.Where(x => x.id == item.id_holdTime).FirstOrDefault().time_diffrence == 0)
+                                {
+                                    <tr name="table-tr">
+                                        <td class="table_style_name">
+                                            @Html.DisplayFor(modelItem => item.name)
+                                        </td>
+                                        <td class="table_style_time">
+                                            @Html.DisplayFor(modelItem => item.time_admin)
+                                        </td>
+                                        <td style="background-color:cyan" class="table_style_time">
+                                            @Html.DisplayFor(modelItem => item.time_user)
+                                        </td>
+                                        <td class="table_style_time">
+                                            @Html.DisplayFor(modelItem => item.diffrence)
+                                        </td>
+                                        <td class="table_style_button">
+                                            <button class="butt-defaulta" onclick="location.href='@Url.Action("Zatrzymaj", "Users", new { id = item.id })'">
+                                                Zatrzymaj
+                                            </button>
+                                        </td>
+                                        <td class="table_style_button">
+                                            <button class="butt-defaulta" onclick="confirmDelete('@item.id')">
+                                                Zakończ
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr name="table-tr">
+                                        <td class="table_style_name">
+                                            @Html.DisplayFor(modelItem => item.name)
+                                        </td>
+                                        <td class="table_style_time">
+                                            @Html.DisplayFor(modelItem => item.time_admin)
+                                        </td>
+                                        <td class="table_style_time">
+                                            @Html.DisplayFor(modelItem => item.time_user)
+                                        </td>
+                                        <td class="table_style_time">
+                                            @Html.DisplayFor(modelItem => item.diffrence)
+                                        </td>
+                                        <td class="table_style_button">
+                                            <button class="butt-defaulta" onclick="location.href='@Url.Action("Wznow", "Users", new { id = item.id })'">
+                                                Wznów
+                                            </button>
+                                        </td>
+                                        <td class="table_style_button">
+                                            <button class="butt-defaulta" onclick="confirmDelete('@item.id')">
+                                                Zakończ
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </tbody>
+</table>
+<h2>
+    Zakończone
+</h2>
+<table class="table_own_style">
+    <thead>
+        <tr>
+            <th class="table_style_name">
+                @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().name)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().time_admin)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().time_user)
+            </th>
+            <th class="table_style_time">
+                @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().diffrence)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item1)
+        {
+            @if (item.stan == true)
+            {
+                @foreach (var item3 in Model.Item3)
+                {
+                    @if (item3.login == (string)ViewData["login"])
+                    {
+                        @if (item.id_usera == item3.id)
+                        {
+                            @if (item.diffrence < 0)
+                            {
+                                <tr style="background-color:#ff2626;">
+                                    <td class="table_style_name">
+                                        @Html.DisplayFor(modelItem => item.name)
+                                    </td>
+                                    <td class="table_style_time">
+                                        @Html.DisplayFor(modelItem => item.time_admin)
+                                    </td>
+                                    <td class="table_style_time">
+                                        @Html.DisplayFor(modelItem => item.time_user)
+                                    </td>
+                                    <td class="table_style_time">
+                                        @Html.DisplayFor(modelItem => item.diffrence)
+                                    </td>
+                                    <td style="border: 1px solid black">
+                                        Zadanie zakończone
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr style="background-color:#00bf00;">
+                                    <td class="table_style_name">
+                                        @Html.DisplayFor(modelItem => item.name)
+                                    </td>
+                                    <td class="table_style_time">
+                                        @Html.DisplayFor(modelItem => item.time_admin)
+                                    </td>
+                                    <td class="table_style_time">
+                                        @Html.DisplayFor(modelItem => item.time_user)
+                                    </td>
+                                    <td class="table_style_time">
+                                        @Html.DisplayFor(modelItem => item.diffrence)
+                                    </td>
+                                    <td class="table_style_name">
+                                        Zadanie zakończone
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><b>Suma różnic</b></td>
+            <td><b>@ViewData["res"]</b></td>
+        </tr>
+    </tfoot>
+</table>
+
+@section Scripts
+{
+    <script>
+        var sesja = '@ViewData["nameKomorki"]';
+        var continueT = @ViewData["continueTime"];
+    </script>
+}

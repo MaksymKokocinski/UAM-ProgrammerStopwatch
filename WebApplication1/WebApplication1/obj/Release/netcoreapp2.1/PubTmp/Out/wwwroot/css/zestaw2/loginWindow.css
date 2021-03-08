@@ -1,0 +1,25 @@
+﻿/*clasa diva przechowującego form*/
+#windowLoginContainer {
+    width: 300px;
+    height: 270px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 50px;
+    border-radius: 5px;
+    background-color: steelblue;
+    color: midnightblue;
+    box-shadow: 10px 10px 10px #000;
+    -webkit-box-shadow: 10px 10px 10px #000;
+    -moz-box-shadow: 10px 10px 10px #000;
+}
+/*clasa dla forma*/
+#elementForm {
+    margin: auto;
+    text-align: center;
+}
+/*clasa dla elementów forma*/
+.elementOfForm {
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+}
