@@ -11,3 +11,6 @@
 # What it is and what it does?
 It's a stopwatch for programmers. More specific info you can find in documentation file, unfortunately only in polish.
 
+# How it looks?
+https://stoperscrum.projektstudencki.pl
+login: user1 pass: pass1
